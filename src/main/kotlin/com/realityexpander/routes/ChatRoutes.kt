@@ -1,8 +1,8 @@
-package com.plcoding.routes
+package com.realityexpander.routes
 
-import com.plcoding.room.MemberAlreadyExistsException
-import com.plcoding.room.RoomController
-import com.plcoding.session.ChatSession
+import com.realityexpander.room.MemberAlreadyExistsException
+import com.realityexpander.room.RoomController
+import com.realityexpander.session.ChatSession
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
@@ -15,10 +15,12 @@ import kotlinx.coroutines.channels.consumeEach
 fun Route.chatSocket(roomController: RoomController) {
     webSocket("/chat-socket") {
         val session = call.sessions.get<ChatSession>()
+
         if(session == null) {
             close(CloseReason(CloseReason.Codes.VIOLATED_POLICY, "No session."))
             return@webSocket
         }
+
         try {
             roomController.onJoin(
                 username = session.username,

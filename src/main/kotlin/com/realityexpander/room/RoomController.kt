@@ -1,7 +1,7 @@
-package com.plcoding.room
+package com.realityexpander.room
 
-import com.plcoding.data.MessageDataSource
-import com.plcoding.data.model.Message
+import com.realityexpander.data.MessageDataSource
+import com.realityexpander.data.model.Message
 import io.ktor.http.cio.websocket.*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -28,13 +28,20 @@ class RoomController(
     }
 
     suspend fun sendMessage(senderUsername: String, message: String) {
+        val messageEntity = Message(
+            text = message,
+            username = senderUsername,
+            timestamp = System.currentTimeMillis()
+        )
+        messageDataSource.insertMessage(messageEntity)
+
         members.values.forEach { member ->
-            val messageEntity = Message(
-                text = message,
-                username = senderUsername,
-                timestamp = System.currentTimeMillis()
-            )
-            messageDataSource.insertMessage(messageEntity)
+//            val messageEntity = Message(
+//                text = message,
+//                username = senderUsername,
+//                timestamp = System.currentTimeMillis()
+//            )
+//            messageDataSource.insertMessage(messageEntity)
 
             val parsedMessage = Json.encodeToString(messageEntity)
             member.socket.send(Frame.Text(parsedMessage))

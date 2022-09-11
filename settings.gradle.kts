@@ -1,1 +1,1 @@
-rootProject.name = "com.plcoding.ktor-chat"
+rootProject.name = "com.realityexpander.ktor-chat"

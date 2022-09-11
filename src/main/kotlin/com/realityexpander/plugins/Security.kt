@@ -1,11 +1,8 @@
-package com.plcoding.plugins
+package com.realityexpander.plugins
 
-import com.plcoding.session.ChatSession
+import com.realityexpander.session.ChatSession
 import io.ktor.sessions.*
 import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.*
 import io.ktor.util.*
 
 fun Application.configureSecurity() {

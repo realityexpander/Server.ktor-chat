@@ -1,6 +1,6 @@
-package com.plcoding.data
+package com.realityexpander.data
 
-import com.plcoding.data.model.Message
+import com.realityexpander.data.model.Message
 import org.litote.kmongo.coroutine.CoroutineDatabase
 
 class MessageDataSourceImpl(

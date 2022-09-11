@@ -1,4 +1,4 @@
-package com.plcoding.data.model
+package com.realityexpander.data.model
 
 import kotlinx.serialization.Serializable
 import org.bson.codecs.pojo.annotations.BsonId

@@ -1,4 +1,4 @@
-package com.plcoding.room
+package com.realityexpander.room
 
 import io.ktor.http.cio.websocket.*
 
