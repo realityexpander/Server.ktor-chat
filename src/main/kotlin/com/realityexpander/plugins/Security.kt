@@ -10,10 +10,12 @@ fun Application.configureSecurity() {
         cookie<ChatSession>("SESSION")
     }
 
+    // Get session for current user
     intercept(ApplicationCallPipeline.Features) {
+
         if(call.sessions.get<ChatSession>() == null) {
             val username = call.parameters["username"] ?: "Guest"
-            call.sessions.set(ChatSession(username, generateNonce()))
+            call.sessions.set(ChatSession(username, generateNonce())) // generate a session ID (nonce)
         }
     }
 }

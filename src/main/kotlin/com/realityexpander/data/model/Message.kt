@@ -4,11 +4,12 @@ import kotlinx.serialization.Serializable
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
 
-@Serializable
+@Serializable // serialize to JSON
 data class Message(
     val text: String,
     val username: String,
     val timestamp: Long,
+
     @BsonId
-    val id: String = ObjectId().toString()
+    val id: String = ObjectId().toString()  // generate random ID
 )

@@ -22,13 +22,17 @@ fun Route.chatSocket(roomController: RoomController) {
         }
 
         try {
+            // Add the user to the room
             roomController.onJoin(
                 username = session.username,
                 sessionId = session.sessionId,
                 socket = this
             )
+
+            // Listen for incoming messages
             incoming.consumeEach { frame ->
                 if(frame is Frame.Text) {
+                    // Broadcast the message to all users in the room
                     roomController.sendMessage(
                         senderUsername = session.username,
                         message = frame.readText()

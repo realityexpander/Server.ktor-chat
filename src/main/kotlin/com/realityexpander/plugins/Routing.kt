@@ -8,6 +8,7 @@ import io.ktor.application.*
 import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
+    // Inject with Koin
     val roomController by inject<RoomController>()
 
     install(Routing) {

@@ -1,5 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
+// Defined in the root `gradle.properties` file
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
@@ -13,7 +14,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "5.2.0"
 }
 
-group = "com.plcoding"
+group = "com.realityexpander"
 version = "0.0.1"
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
@@ -79,7 +80,7 @@ task("deploy") {
             val user = "root"
             val host = "153.92.222.102"
             val pk = file("keys/ktorchat")
-            val jarFileName = "com.plcoding.ktor-chat-$version-all.jar"
+            val jarFileName = "com.realityexpander.ktor-chat-$version-all.jar"
             try {
                 "scp"(
                     "file" to file("build/libs/$jarFileName"),

@@ -4,10 +4,10 @@ import com.realityexpander.data.model.Message
 import org.litote.kmongo.coroutine.CoroutineDatabase
 
 class MessageDataSourceImpl(
-    private val db: CoroutineDatabase
+    private val db: CoroutineDatabase  // KMongo database
 ): MessageDataSource {
 
-    private val messages = db.getCollection<Message>()
+    private val messages = db.getCollection<Message>()  // creates the database collection
 
     override suspend fun getAllMessages(): List<Message> {
         return messages.find()
