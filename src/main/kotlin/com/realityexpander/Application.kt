@@ -13,6 +13,12 @@ import org.koin.ktor.ext.Koin
 // Connect: ws://localhost:8082/chat-socket
 // Send: {"type":"message","data":"Hello World"}
 
+// Use MongoDB Compass to view the database
+
+// From web console:
+// let ws1 = new WebSocket("ws://localhost:8082/chat-socket?username=phil")
+// ws1.send(JSON.stringify({type: "message", data: "Hello World"}))
+
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
