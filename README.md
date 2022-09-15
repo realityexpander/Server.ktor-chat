@@ -103,3 +103,9 @@ systemctl restart mongod
 cd /root
 mkdir chat
 ```
+
+## Trouble shooting
+
+May need to run to reset `chat.service`:
+
+`systemctl daemon-reload` 
