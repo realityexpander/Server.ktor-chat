@@ -69,9 +69,11 @@ WantedBy=multi-user.target
 ```
 
 13. Launch the service:
+
 `sudo systemctl start chat`
 
 14. Create a symlink to automatically launch the service on boot up:
+
 `sudo systemctl enable chat`
 
 15. Make sure, your ports are open and you forward the traffic from the standard HTTP port to 8080:
@@ -82,6 +84,7 @@ sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
 ```
 
 16. Then, save your iptables rules:
+
 `sudo apt-get install iptables-persistent`
 
 17. Install MongoDB
