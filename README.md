@@ -9,3 +9,85 @@ https://www.piesocket.com/websocket-tester
 
 Websocket url: `ws://localhost:8082/chat-socket?username=Jimbo`
 
+## Deployment Steps
+
+1. Download Git Bash (only if on Windows)
+
+2. Go to your users folder and open the .ssh folder. Then open Git Bash / Terminal there and generate a key pair:
+`ssh-keygen -m PEM -t rsa -b 2048`
+
+3. Copy the key to your server:
+`ssh-copy-id -i <keyname> <user>@<host>`
+
+5. Login to your Ubuntu server via SSH:
+`ssh -i <keyname> <user>@<host>`
+
+6. Update dependencies:
+`sudo apt update`
+
+7. Install Java:
+`sudo apt-get install default-jdk`
+
+8. Open /etc/ssh/sshd_config:
+`sudo nano /etc/ssh/sshd_config`
+
+9. Put this string in there, save with Ctrl+S and exit with Ctrl+X:
+`KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1`
+
+10. Restart the sshd service:
+`sudo systemctl restart sshd`
+
+11. Create a systemd service for your Ktor server:
+`sudo nano /etc/systemd/system/chat.service`
+
+12. Paste this configuration in this service, then save with Ctrl+S and exit with Ctrl+X:
+```
+[Unit]
+Description=Chat Service
+After=network.target
+StartLimitIntervalSec=10
+StartLimitBurst=5
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=sudo java -jar /root/chat/chat-server.jar
+
+[Install]
+WantedBy=multi-user.target
+```
+
+13. Launch the service:
+`sudo systemctl start chat`
+
+14. Create a symlink to automatically launch the service on boot up:
+`sudo systemctl enable chat`
+
+15. Make sure, your ports are open and you forward the traffic from the standard HTTP port to 8080:
+```
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+```
+
+16. Then, save your iptables rules:
+`sudo apt-get install iptables-persistent`
+
+17. Install MongoDB
+```
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb.list
+apt-get update
+apt-get install mongodb-org
+systemctl unmask mongod
+systemctl enable mongod
+systemctl restart mongod
+```
+
+18. Make sure the folder /root/chat/ exists
+```
+cd /root
+mkdir chat
+```
