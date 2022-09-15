@@ -14,30 +14,39 @@ Websocket url: `ws://localhost:8082/chat-socket?username=Jimbo`
 1. Download Git Bash (only if on Windows)
 
 2. Go to your users folder and open the .ssh folder. Then open Git Bash / Terminal there and generate a key pair:
+
 `ssh-keygen -m PEM -t rsa -b 2048`
 
 3. Copy the key to your server:
+
 `ssh-copy-id -i <keyname> <user>@<host>`
 
 5. Login to your Ubuntu server via SSH:
+
 `ssh -i <keyname> <user>@<host>`
 
 6. Update dependencies:
+
 `sudo apt update`
 
 7. Install Java:
+
 `sudo apt-get install default-jdk`
 
 8. Open /etc/ssh/sshd_config:
+
 `sudo nano /etc/ssh/sshd_config`
 
 9. Put this string in there, save with Ctrl+S and exit with Ctrl+X:
+
 `KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1`
 
 10. Restart the sshd service:
+
 `sudo systemctl restart sshd`
 
 11. Create a systemd service for your Ktor server:
+
 `sudo nano /etc/systemd/system/chat.service`
 
 12. Paste this configuration in this service, then save with Ctrl+S and exit with Ctrl+X:
