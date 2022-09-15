@@ -11,19 +11,19 @@ plugins {
     application
     kotlin("jvm") version "1.5.31"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.6.0"
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "5.2.0"  // generates a fat jar
 }
 
 group = "com.realityexpander"
 version = "0.0.1"
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
-    project.setProperty("mainClassName", mainClass.get())
+    project.setProperty("mainClassName", mainClass.get())  // used by the shadow plugin
 }
 
 repositories {
     mavenCentral()
-    gradlePluginPortal()
+    gradlePluginPortal()  // for the shadow plugin
 }
 
 val sshAntTask = configurations.create("sshAntTask")
@@ -74,14 +74,18 @@ ant.withGroovyBuilder {
 
 task("deploy") {
     dependsOn("clean", "shadowJar")
+
     ant.withGroovyBuilder {
         doLast {
             val knownHosts = File.createTempFile("knownhosts", "txt")
             val user = "root"
-            val host = "153.92.222.102"
-            val pk = file("keys/ktorchat")
+            val host = "82.180.173.232"
+            val pk = file("keys/hostinger_rsa")
             val jarFileName = "com.realityexpander.ktor-chat-$version-all.jar"
+
             try {
+
+                // Copy the jar file to the server
                 "scp"(
                     "file" to file("build/libs/$jarFileName"),
                     "todir" to "$user@$host:/root/chat",
@@ -89,6 +93,8 @@ task("deploy") {
                     "trust" to true,
                     "knownhosts" to knownHosts
                 )
+
+                // Rename the jar file
                 "ssh"(
                     "host" to host,
                     "username" to user,
@@ -97,6 +103,8 @@ task("deploy") {
                     "knownhosts" to knownHosts,
                     "command" to "mv /root/chat/$jarFileName /root/chat/chat-server.jar"
                 )
+
+                // Stop the current chat server
                 "ssh"(
                     "host" to host,
                     "username" to user,
@@ -105,6 +113,8 @@ task("deploy") {
                     "knownhosts" to knownHosts,
                     "command" to "systemctl stop chat"
                 )
+
+                // Start the new chat server
                 "ssh"(
                     "host" to host,
                     "username" to user,
