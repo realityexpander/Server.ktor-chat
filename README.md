@@ -25,7 +25,17 @@ Give it the <keyname> (I suggest hostinger_rsa)
 
 `ssh-copy-id -i <keyname> <user>@<host>`
  
-4. Copy the key to your local `/key` folder.
+4. Make a local `/key` folder and copy the <keyname> file to your local app dev `/key` folder.
+ 
+ It should look like this inside:
+ 
+ ```
+ -----BEGIN RSA PRIVATE KEY-----
+MIIG4wIBAAKCAYEAxSXsSpaIlJRKF11qpQEaBwnrn5Xv4EelL/Iqpn7VBRnLdefz
+QE9lHmF5oVB6Em1MEXJVzs+X6CZRSVTYGezWjmy/v/07aaiGZX1MgXjS0Q6DzKPC
+ ...
+ -----END RSA PRIVATE KEY-----
+ ```
 
 5. Login to your Ubuntu server via SSH:
 
