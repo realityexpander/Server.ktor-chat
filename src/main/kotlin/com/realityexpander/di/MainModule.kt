@@ -27,9 +27,9 @@ private val mongoSettings: Map<String, String> = mapOf(
 // REFERENCE: server full client connection raw string (for app running on the server):
 // from MongoCompass: mongodb://AdminUsername:PasswordXXXX%25%5E%26@localhost:27017/?authMechanism=DEFAULT&authSource=admin
 //
-// Use this way for raw connection string:
-// MONGO_HOST=AdminUsername:PasswordXXXX%25%5E%26@localhost       // Note: uses ascii encoded username and password
-// MONGO_HOST_POSTFIX=/?authSource=admin                   // Note: stripped out the "authmechanism" param
+// Use this way for raw connection string for local server:
+// MONGO_HOST=AdminUsername:PasswordXXXX%25%5E%26@localhost  // Note: uses ascii encoded username and password
+// MONGO_HOST_POSTFIX=/?authSource=admin                     // Note: stripped out the "authmechanism" param
 
 // Build the connection string
 private val clientConnectionString =
