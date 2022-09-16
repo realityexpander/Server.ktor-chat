@@ -27,7 +27,7 @@ Give it the <keyname> (I suggest hostinger_rsa)
  
 4. Make a local `/key` folder and copy the <keyname> file to your local app dev `/key` folder.
  
- It should look like this inside:
+ The file should look like this inside:
  
  ```
  -----BEGIN RSA PRIVATE KEY-----
