@@ -104,6 +104,42 @@ cd /root
 mkdir chat
 ```
 
+19. Add `environement` file
+
+`nano environment`
+
+```
+MONGO_USERNAME="ADMIN_USERNAME_IN_QUOTES"
+MONGO_PASSWORD="PASSWORD_IN_QUOTES"
+MONGO_HOST=localhost
+MONGO_PORT=27017
+MONGO_AUTH_SOURCE=admin
+```
+
+Be sure to add the user and password to the Mongo Admin database!
+
+ ### Create an admin user:
+ ```
+  use admin
+  db.createUser({user: "theAdmin", pwd: "password", roles: [{role: "readWrite", db: "admin"}]})
+ or:
+  db.createUser({user: "theAdmin", pwd: passwordPrompt(),
+    roles: [
+      { role: "userAdminAnyDatabase", db: "admin" },
+      { role: "readWriteAnyDatabase", db: "admin" }
+  ]})
+ Auth the user:
+  use admin
+  db.auth("ADMIN_USERNAME", passwordPrompt()) // or cleartext password
+ Show users:
+  use admin
+  db.system.users.find()
+ Remove user:
+  use admin
+  db.system.users.deleteOne({user: "user"})
+  ```
+
+
 ## Trouble shooting
 
 May need to run to reset `chat.service`:
