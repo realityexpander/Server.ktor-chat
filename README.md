@@ -133,6 +133,11 @@ MONGO_AUTH_SOURCE=admin
 ```
 ctrl-s, ctrl-x
 
+20. Deploy automatically with gradle
+
+On local dev machine terminal:
+`gradlew deploy`
+
 # Be sure to add the user and password to the Mongo Admin database! OR IT WILL DEFINITELY BE HACKED!!!
 
 ### Create an admin user from MongoSh (mongo shell)
@@ -168,6 +173,6 @@ ctrl-s, ctrl-x
 
 ## Trouble shooting
 
-May need to run to reset `chat.service`:
+May need to run to reset `chat.service` (on remote ubuntu server):
 
 `systemctl daemon-reload` 
