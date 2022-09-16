@@ -3,6 +3,8 @@ Server for the Ktor-chat app
 
 Backend for KtorAndroidChat app: https://github.com/realityexpander/KtorAndroidChat
 
+## Test without app
+
 Also use WebSocket testing site:
 
 https://www.piesocket.com/websocket-tester
