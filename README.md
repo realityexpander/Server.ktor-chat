@@ -7,7 +7,7 @@ Also use WebSocket testing site:
 
 https://www.piesocket.com/websocket-tester
 
-Websocket url: `ws://localhost:8082/chat-socket?username=Jimbo`
+Websocket local url: `ws://localhost:8082/chat-socket?username=Jimbo`
 
 ## Deployment Steps
 
