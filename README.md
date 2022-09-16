@@ -5,7 +5,7 @@ Backend for KtorAndroidChat app: https://github.com/realityexpander/KtorAndroidC
 
 ## Test without app
 
-Also use WebSocket testing site:
+Use this WebSocket testing site for local testing. (Does not work with the deployed server)
 
 https://www.piesocket.com/websocket-tester
 
