@@ -1,6 +1,7 @@
 package com.realityexpander
 
 import com.realityexpander.di.mainModule
+import com.realityexpander.di.printMongoEnv
 import io.ktor.application.*
 import com.realityexpander.plugins.*
 import org.koin.ktor.ext.Koin
@@ -36,4 +37,6 @@ fun Application.module() {
     configureSerialization()
     configureMonitoring()
     configureSecurity()
+
+    printMongoEnv() // for testing only
 }
