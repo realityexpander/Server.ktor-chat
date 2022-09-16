@@ -121,9 +121,12 @@ Be sure to add the user and password to the Mongo Admin database!
 ### Create an admin user from MongoSh (mongo shell)
  ```
   use admin
-  db.createUser({user: "theAdmin", pwd: "password", roles: [{role: "readWrite", db: "admin"}]})
+  
+  db.createUser({user: "ADMIN_USERNAME", pwd: "password", roles: [{role: "readWrite", db: "admin"}]})
+ ```
  or:
-  db.createUser({user: "theAdmin", pwd: passwordPrompt(),
+ ```
+  db.createUser({user: "ADMIN_USERNAME", pwd: passwordPrompt(),
     roles: [
       { role: "userAdminAnyDatabase", db: "admin" },
       { role: "readWriteAnyDatabase", db: "admin" }
