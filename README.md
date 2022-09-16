@@ -76,11 +76,11 @@ WantedBy=multi-user.target
 
 `sudo systemctl enable chat`
 
-15. Make sure, your ports are open and you forward the traffic from the standard HTTP port to 8080:
+15. Make sure, your ports are open and you forward the traffic from the standard HTTP port to 8082:
 ```
-iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8082
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8082 -j ACCEPT
 ```
 
 16. Then, save your iptables rules:
@@ -115,6 +115,7 @@ MONGO_HOST=localhost
 MONGO_PORT=27017
 MONGO_AUTH_SOURCE=admin
 ```
+ctrl-s, ctrl-x
 
 Be sure to add the user and password to the Mongo Admin database!
 
