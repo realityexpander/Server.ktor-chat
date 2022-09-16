@@ -104,7 +104,7 @@ cd /root
 mkdir chat
 ```
 
-19. Add `environement` file
+19. Add `environement` file in `/root/chat/`
 
 `nano environment`
 
