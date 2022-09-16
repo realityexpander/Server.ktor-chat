@@ -118,7 +118,7 @@ MONGO_AUTH_SOURCE=admin
 
 Be sure to add the user and password to the Mongo Admin database!
 
- ### Create an admin user:
+### Create an admin user from MongoSh (mongo shell)
  ```
   use admin
   db.createUser({user: "theAdmin", pwd: "password", roles: [{role: "readWrite", db: "admin"}]})
@@ -128,13 +128,19 @@ Be sure to add the user and password to the Mongo Admin database!
       { role: "userAdminAnyDatabase", db: "admin" },
       { role: "readWriteAnyDatabase", db: "admin" }
   ]})
+  ```
  Auth the user:
+ ```
   use admin
   db.auth("ADMIN_USERNAME", passwordPrompt()) // or cleartext password
+  ```
  Show users:
+ ```
   use admin
   db.system.users.find()
+  ```
  Remove user:
+ ```
   use admin
   db.system.users.deleteOne({user: "user"})
   ```
