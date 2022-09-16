@@ -13,7 +13,7 @@ Websocket url: `ws://localhost:8082/chat-socket?username=Jimbo`
 
 1. Download Git Bash (only if on Windows)
 
-2. Go to your users folder and open the .ssh folder. Then open Git Bash / Terminal there and generate a key pair:
+2. Go to your users folder and open the `~/.ssh` folder. Then open Git Bash / Terminal there and generate a key pair:
 
 `ssh-keygen -m PEM -t rsa -b 2048`
 
