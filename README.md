@@ -117,7 +117,7 @@ MONGO_AUTH_SOURCE=admin
 ```
 ctrl-s, ctrl-x
 
-Be sure to add the user and password to the Mongo Admin database!
+# Be sure to add the user and password to the Mongo Admin database! OR IT WILL DEFINITELY BE HACKED!!!
 
 ### Create an admin user from MongoSh (mongo shell)
  ```
