@@ -38,5 +38,5 @@ fun Application.module() {
     configureMonitoring()
     configureSecurity()
 
-    printMongoEnv() // for testing only
+    // printMongoEnv() // for testing only
 }
