@@ -122,9 +122,9 @@ Be sure to add the user and password to the Mongo Admin database!
  ```
   use admin
   
-  db.createUser({user: "ADMIN_USERNAME", pwd: "password", roles: [{role: "readWrite", db: "admin"}]})
+  db.createUser({user: "ADMIN_USERNAME", pwd: "PASSWORD_RAW_NO_EXTRA_QUOTES", roles: [{role: "readWrite", db: "admin"}]})
  ```
- or:
+ or this option (which you will be prompted for the password, so it wont be visible like the above step):
  ```
   db.createUser({user: "ADMIN_USERNAME", pwd: passwordPrompt(),
     roles: [
