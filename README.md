@@ -17,9 +17,13 @@ Websocket local url: `ws://localhost:8082/chat-socket?username=Jimbo`
 
 `ssh-keygen -m PEM -t rsa -b 2048`
 
+Give it the <keyname> (I suggest hostinger_rsa)
+
 3. Copy the key to your server:
 
 `ssh-copy-id -i <keyname> <user>@<host>`
+ 
+4. Copy the key to your local `/key` folder.
 
 5. Login to your Ubuntu server via SSH:
 
