@@ -140,7 +140,7 @@ On local dev machine terminal:
 
 # Be sure to add the user and password to the Mongo Admin database! OR IT WILL DEFINITELY BE HACKED!!!
 
-### Create an admin user from MongoSh (mongo shell)
+### Create an admin user from MongoSh (mongo shell) or Mongo Compass
  ```
   use admin
   
