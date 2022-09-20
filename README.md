@@ -136,7 +136,7 @@ ctrl-s, ctrl-x
 20. Deploy automatically with gradle
 
 On local dev machine terminal:
-`gradlew deploy`
+`./gradlew deploy`
 
 # Be sure to add the user and password to the Mongo Admin database! OR IT WILL DEFINITELY BE HACKED!!!
 
